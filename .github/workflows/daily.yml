@@ -1,9 +1,9 @@
 name: Daily SERP Monitor
 
 on:
-  workflow_dispatch:  # 수동 실행 버튼 활성화
+  workflow_dispatch:
   schedule:
-    - cron: '0 21 * * *'  # 매일 UTC 21:00 = 한국 시간 새벽 6:00
+    - cron: '0 21 * * *'
 
 jobs:
   run:
@@ -24,4 +24,6 @@ jobs:
       - name: Run SERP Monitor
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
         run: python serp_monitor.py
