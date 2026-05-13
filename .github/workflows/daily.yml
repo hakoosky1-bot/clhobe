@@ -17,9 +17,14 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
+
       - name: Install dependencies
         run: |
-          pip install google-api-python-client google-auth google-auth-httplib2
+          pip install google-api-python-client google-auth google-auth-httplib2 selenium beautifulsoup4
 
       - name: Run SERP Monitor
         env:
